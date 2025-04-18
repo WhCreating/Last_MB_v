@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <base href="/">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Last.ai</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Last.ai</h1>
+
+            <div id="popup" class="popup">
+                    <div class="popup-content", id="popupik">
+                        <span class="close-button" id="closePopup">&times;</span>
+                        <h2>Api-Key:</h2>
+                        <input
+                            type="text"
+                            class="input-field2"
+                            placeholder="Название нейросети?"
+                            id="queryInput2"
+                        />
+                        <button class="button save-button" id="saveButton" style="width:220px">Сохранить</button>
+                    </div>
+            </div>
+
+            <div class="sett">
+
+                <image src="texture/2.1th.png" style="width:15px; height:15px" class="button theme-button" id="themeButton">
+
+                <button class="button language-button" id="languageButton" style="width:50px">
+                    EN
+                </button>
+
+               <!-- -- <image src="texture/setting.png" style="width:15px; height:15px" class="button setting-button" id="openPopup"> -->
+
+            </div>
+
+
+            <div class="question-text" id="questionText">
+                Что такое Last.ai?
+            </div>
+
+            <div class="response-text" id="responseText">
+                Это новый голосовой помощник!
+            </div>
+
+            <div class="input-container">
+                <input
+                    type="text"
+                    class="input-field"
+                    placeholder="Введите ваш запрос..."
+                    id="queryInput"
+                />
+
+                <image src="texture/icontit.png" style="width:15px; height:15px" class="button voice-button" id="voiceButton">
+                <image src="texture/send1.png" style="width:15px; height:15px" class="button voice-button" id="sendButton">
+            </div>
+
+            <a href="introduction.html" target="_parent">Ознакомление с функционалом</a>
+
+
+        </div>
+
+        <script type="text/javascript" src="/eel.js"></script>
+        <script src="main.js"></script>
+        <script src="back.js"></script>
+    </body>
+</html>
