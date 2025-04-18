@@ -46,6 +46,22 @@
                 Это новый голосовой помощник!
             </div>
 
+            <form>
+                <label for="fruits">Нейросеть:</label>
+                <select id="neiro" class="input-field" name="neiro" onchange="nn()">
+                    <option>qwen-2-5-max</option>
+                    <option>qwen-2.5-1m</option>
+                    <option>gpt-4</option>
+                    <option>gpt-4o-mini</option>
+                    <option>gpt-3.5-turbo</option>
+                    <option>o1</option>
+                    <option>deepseek-r1</option>
+                    <option>deepseek-v3</option>
+                    <option>llama-3.3-70b</option>
+                    <option>llama-3.2-90b</option>
+                </select>
+            </form>
+
             <div class="input-container">
                 <input
                     type="text"

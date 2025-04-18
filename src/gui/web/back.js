@@ -5,6 +5,7 @@ const voice = document.getElementById("voiceButton");
 const promt = document.getElementById("questionText");
 const sendBut = document.getElementById("sendButton");
 const respTxt = document.getElementById("responseText");
+var neiro = "qwen-2-5-max";
 
 savButik.addEventListener("click", () => {
   eel.jsConverter("api-key-gpt", inps2.value)();
@@ -23,7 +24,7 @@ voice.addEventListener("click", () => {
       respTxt.innerText = "Думает. . .";
 
       eel
-        .promtik("qwen-2-5-max", promt.innerText)()
+        .promtik(neiro, promt.innerText)()
         .then((otv) => {
           respTxt.innerText = otv;
         });
@@ -36,9 +37,15 @@ sendBut.addEventListener("click", () => {
     inps.value = "";
     respTxt.innerText = "Думает. . .";
     eel
-      .promtik("qwen-2-5-max", promt.innerText)()
+      .promtik(neiro, promt.innerText)()
       .then((otv) => {
         respTxt.innerText = otv;
       });
   }
 });
+
+function nn() {
+  const neir1 = document.getElementById("neiro");
+  neiro = neir1.value;
+  console.log(neiro);
+}
