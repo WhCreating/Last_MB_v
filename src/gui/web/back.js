@@ -6,6 +6,7 @@ const promt = document.getElementById("questionText");
 const sendBut = document.getElementById("sendButton");
 const respTxt = document.getElementById("responseText");
 var neiro = "qwen-2-5-max";
+var geners = "text-generation";
 
 savButik.addEventListener("click", () => {
   eel.jsConverter("api-key-gpt", inps2.value)();
@@ -13,6 +14,7 @@ savButik.addEventListener("click", () => {
 
 voice.addEventListener("click", () => {
   promt.innerText = "Слушаю. . .";
+  inps.disabled = true;
 
   eel
     .list_micro()()
@@ -23,11 +25,25 @@ voice.addEventListener("click", () => {
     .then(() => {
       respTxt.innerText = "Думает. . .";
 
-      eel
-        .promtik(neiro, promt.innerText)()
-        .then((otv) => {
-          respTxt.innerText = otv;
-        });
+      if (geners === "text-generation") {
+        eel
+          .promtik(neiro, promt.innerText)()
+          .then((otv) => {
+            respTxt.innerText = otv;
+          })
+          .then(() => {
+            inps.disabled = false;
+          });
+      } else {
+        eel
+          .generImage(promt.innerText)()
+          .then((otv) => {
+            respTxt.innerHTML = `<img src="${otv}" width="300px">`;
+          })
+          .then(() => {
+            inps.disabled = false;
+          });
+      }
     });
 });
 
@@ -36,11 +52,27 @@ sendBut.addEventListener("click", () => {
     promt.innerText = inps.value;
     inps.value = "";
     respTxt.innerText = "Думает. . .";
-    eel
-      .promtik(neiro, promt.innerText)()
-      .then((otv) => {
-        respTxt.innerText = otv;
-      });
+    inps.disabled = true;
+
+    if (geners === "text-generation") {
+      eel
+        .promtik(neiro, promt.innerText)()
+        .then((otv) => {
+          respTxt.innerText = otv;
+        })
+        .then(() => {
+          inps.disabled = false;
+        });
+    } else {
+      eel
+        .generImage(promt.innerText)()
+        .then((otv) => {
+          respTxt.innerHTML = `<img src="${otv}" width="300px">`;
+        })
+        .then(() => {
+          inps.disabled = false;
+        });
+    }
   }
 });
 
@@ -48,4 +80,16 @@ function nn() {
   const neir1 = document.getElementById("neiro");
   neiro = neir1.value;
   console.log(neiro);
+}
+
+function nn1() {
+  const neir1 = document.getElementById("neiros");
+  geners = neir1.value;
+  if (geners === "text-generation") {
+    respTxt.innerText = "Это новый голосовой помощник!";
+  } else {
+    respTxt.innerHTML = '<img src="texture/white_cat.jpg" width="300px">';
+  }
+
+  console.log(geners);
 }
