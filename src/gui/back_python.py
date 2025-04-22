@@ -4,6 +4,7 @@ import json
 import speech_recognition as sr
 from g4f.client import Client
 import pyttsx3
+from translate import Translator
 
 eel.init(f'{os.path.dirname(os.path.realpath(__file__))}/web')
 
@@ -50,7 +51,7 @@ def promtik(model: str, promt: str):
     response = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": promt}],
-        web_search=False
+        web_search=True
     )
 
     return response.choices[0].message.content
@@ -60,3 +61,19 @@ def ozv(ozv: str):
     engine = pyttsx3.init()
     engine.say(ozv)
     engine.runAndWait()
+
+
+@eel.expose
+def generImage(promt):
+
+    translator = Translator(from_lang='russian', to_lang='english')
+    translation = translator.translate(promt)
+
+    client = Client()
+    response = client.images.generate(
+        model="midjourney",
+        prompt=translation,
+        response_format="url"
+    )
+
+    return response.data[0].url
