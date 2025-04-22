@@ -7,7 +7,7 @@ Qwen-2.5-max.
 2. В cmd зайдите в папку проект используя "cd"
 3. Создайте виртуальное окружение ```python -m venv .venv```
 4. Запустите виртуальное окружение через ```.venv\Scripts\activate```
-5. Установите зависимости: ```pip install eel PyAudio```, ```pip install -U g4f[all]```
+5. Установите зависимости: ```pip install eel PyAudio translate```, ```pip install -U g4f[all]```
 6. Запустите чат бот через ```python main.py```
 7. Чат-бот готов к использованию
 
