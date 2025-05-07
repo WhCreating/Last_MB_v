@@ -5,6 +5,7 @@ const voice = document.getElementById("voiceButton");
 const promt = document.getElementById("questionText");
 const sendBut = document.getElementById("sendButton");
 const respTxt = document.getElementById("responseText");
+const srch = document.getElementById("search")
 var neiro = "qwen-2-5-max";
 var geners = "text-generation";
 
@@ -26,14 +27,27 @@ voice.addEventListener("click", () => {
       respTxt.innerText = "Думает. . .";
 
       if (geners === "text-generation") {
-        eel
-          .promtik(neiro, promt.innerText)()
+        if (srch.checked) {
+          console.log("True")
+          eel
+          .promtik(neiro, promt.innerText, true)()
           .then((otv) => {
             respTxt.innerText = otv;
           })
           .then(() => {
             inps.disabled = false;
           });
+        } else {
+          eel
+          .promtik(neiro, promt.innerText, false)()
+          .then((otv) => {
+            respTxt.innerText = otv;
+          })
+          .then(() => {
+            inps.disabled = false;
+          });
+        }
+        
       } else {
         eel
           .generImage(promt.innerText)()
@@ -55,14 +69,26 @@ sendBut.addEventListener("click", () => {
     inps.disabled = true;
 
     if (geners === "text-generation") {
-      eel
-        .promtik(neiro, promt.innerText)()
+      if (srch.checked) {
+        console.log("True")
+        eel
+        .promtik(neiro, promt.innerText, true)()
         .then((otv) => {
           respTxt.innerText = otv;
         })
         .then(() => {
           inps.disabled = false;
         });
+      } else {
+        eel
+        .promtik(neiro, promt.innerText, false)()
+        .then((otv) => {
+          respTxt.innerText = otv;
+        })
+        .then(() => {
+          inps.disabled = false;
+        });
+      }
     } else {
       eel
         .generImage(promt.innerText)()
