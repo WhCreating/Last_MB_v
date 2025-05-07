@@ -46,15 +46,18 @@ def list_micro():
             return f"Ошибка сети, проверьте соединение с интернетом!\n Error: {e}"
 
 @eel.expose
-def promtik(model: str, promt: str):
-    client = Client()
-    response = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": promt}],
-        web_search=True
-    )
+def promtik(model: str, promt: str, search=False):
+    try :
+        client = Client()
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": promt}],
+            web_search=search
+        )
 
-    return response.choices[0].message.content
+        return response.choices[0].message.content
+    except:
+        return f"Произошла ошибка"
 
 @eel.expose
 def ozv(ozv: str):
@@ -65,15 +68,17 @@ def ozv(ozv: str):
 
 @eel.expose
 def generImage(promt):
+    try :
+        translator = Translator(from_lang='russian', to_lang='english')
+        translation = translator.translate(promt)
 
-    translator = Translator(from_lang='russian', to_lang='english')
-    translation = translator.translate(promt)
+        client = Client()
+        response = client.images.generate(
+            model="midjourney",
+            prompt=translation,
+            response_format="url"
+        )
 
-    client = Client()
-    response = client.images.generate(
-        model="midjourney",
-        prompt=translation,
-        response_format="url"
-    )
-
-    return response.data[0].url
+        return response.data[0].url
+    except :
+        return f"Произошла ошибка"
