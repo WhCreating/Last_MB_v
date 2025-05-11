@@ -47,7 +47,11 @@
             </div>
 
             <form>
-                <label for="fruits">Нейросеть:</label>
+                <label for="fruits" id="lab">Нейросеть для текста:</label>
+                <select id="category" class="input-field" name="category" onchange="cat()">
+                    <option value="text">текстовые запросы</option>
+                    <option value="coding">кодинг</option>
+                </select>
                 <select id="neiro" class="input-field" name="neiro" onchange="nn()">
                     <option>qwen-2-5-max</option>
                     <option>qwen-2.5-1m</option>
@@ -57,10 +61,10 @@
                     <option>o1</option>
                     <option>deepseek-r1</option>
                     <option>deepseek-v3</option>
-                    <option>llama-3.3-70b</option>
-                    <option>llama-3.2-90b</option>
+                    <option>gigachat</option>
                 </select>
-            </form>
+            </form><br>
+            <p id="textil">Самая мощная языковая модель в серии Qwen. Она подойдет, если нужно использовать сложные рассуждения, исследования, создавать инструкции, решать творческие задачи. Но размер контекста, который учитывает ИИ при ответах, меньше.</p>
 
             <div class="input-container">
                 <input
