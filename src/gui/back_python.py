@@ -57,7 +57,7 @@ def promtik(model: str, promt: str, search=False):
 
         return response.choices[0].message.content
     except:
-        return f"Произошла ошибка"
+        return f"Произошла ошибка ssl сертификатов, возможно в пути имеются русские символы!"
 
 @eel.expose
 def ozv(ozv: str):
@@ -67,18 +67,18 @@ def ozv(ozv: str):
 
 
 @eel.expose
-def generImage(promt):
+def generImage(model: str, promt: str):
     try :
         translator = Translator(from_lang='russian', to_lang='english')
         translation = translator.translate(promt)
 
         client = Client()
         response = client.images.generate(
-            model="midjourney",
+            model=model,
             prompt=translation,
             response_format="url"
         )
 
         return response.data[0].url
     except :
-        return f"Произошла ошибка"
+        return f"Произошла ошибка ssl сертификатов, возможно в пути имеются русские символы!"
